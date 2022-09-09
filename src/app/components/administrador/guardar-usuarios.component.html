@@ -1,0 +1,35 @@
+<app-menu></app-menu>
+
+
+<div class="container formulario">
+  <h2 class="text-center" *ngIf="usuario.id == null">Formulario guardar Usuario</h2>
+  <h2 class="text-center" *ngIf="usuario.id != null" >Formulario actualizar Usuario</h2>
+    
+    <div class="text-danger">
+        {{mensajeError}}
+      </div>
+
+    <form (ngSubmit)="onSubmit()"  #f="ngForm">
+        <div class="form-group">
+          <label for="email">Nombres:</label>
+          <input type="text" class="form-control" name="nombres" [(ngModel)]="usuario.nombres"  required>
+        </div>
+        <div class="form-group">
+            <label for="email">Apellidos:</label>
+            <input type="text" class="form-control" name="apellidos" [(ngModel)]="usuario.apellidos">
+          </div>
+          <div class="form-group">
+            <label for="email">Cedula:</label>
+            <input type="text" class="form-control" name="cedula" [(ngModel)]="usuario.cedula">
+          </div>
+          <div class="form-group pb-5">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" name="email" [(ngModel)]="usuario.email">
+          </div>
+     
+          <button type="submit" class="btn btn-outline-primary mx-2" [disabled]="!f.valid" *ngIf="usuario.id == null" >Guardar</button>
+          <button type="submit" class="btn btn-outline-primary mx-2" [disabled]="!f.valid"  *ngIf="usuario.id != null">Actualizar</button>
+          <button type="button" class="btn btn-outline-secondary" routerLink="/admin">Cancelar</button>
+
+      </form>
+</div>

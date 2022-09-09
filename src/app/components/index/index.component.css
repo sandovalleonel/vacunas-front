@@ -1,0 +1,19 @@
+.body {
+    position: fixed;
+    background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,76,121,1) 0%, rgba(7,65,158,1) 53%, rgba(6,87,172,1) 60%, rgba(2,85,230,1) 88%, rgba(6,24,168,1) 100%, rgba(0,174,255,1) 100%); 
+    background-size: 100% ,100%;
+    height: 100%;
+    width: 100%;
+    }
+
+.centro{
+
+
+    position: relative;
+    width: 20%;
+    margin: auto;
+    margin-top: 10%;
+
+}
+

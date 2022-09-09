@@ -1,0 +1,20 @@
+
+
+  <div class="d-inline-block bg-primary alinear ">
+  
+    <div class="d-inline-block mx-1" *ngIf="isEmpleado">
+      <span class="text-white "> Perfil Empleado</span>
+    </div>
+    <div class="d-inline-block mx-1" *ngIf="isAdmin">
+      <span class="text-white "> Perfil Administrador</span>
+    </div>
+    <div class="d-inline-block">
+      <button class="btn text-white m-1 border" (click)="logout()" >Cerrar Sesión</button>
+    </div>
+  </div>
+
+  
+
+
+ 
+

@@ -1,0 +1,63 @@
+<app-menu></app-menu>
+
+<div  class="container mt-4 mb-4 p-3 d-flex justify-content-center" > 
+    <div class="card p-4"> 
+        <div class=" image d-flex flex-column justify-content-center align-items-center"> 
+            <button class="btn btn-secondary">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTp8vh9I4qPrwIWLdY9JpU8ZaFTrNtlgvRKwA&usqp=CAU" height="100" width="100" />
+            </button> 
+            <span class="name mt-3">{{usuario.nombres}} {{usuario.apellidos}}</span> 
+            <span class="idd">{{usuario.cedula}}</span> 
+            <div class="d-flex flex-row justify-content-center align-items-center gap-2"> 
+                <span class="idd1">{{usuario.email}}</span> 
+                <span>
+                    <i class="fa fa-copy"></i>
+                </span> 
+            </div> 
+            <br>
+           
+
+ 
+            <div class="border">
+                <h4 class="text-center mt-3" > Datos Personales</h4>
+
+                <div class=" px-2 rounded mt-4 date "> 
+                    <span ><strong> Fecha de nacimiento: </strong></span>  <label>{{usuario.detalle.fechaNacimiento | date:'dd/MM/yyyy'}}</label>
+                </div> 
+                <div class=" px-2 rounded mt-4 date "> 
+                    <span ><strong> Domicilio: </strong></span>  <label>{{usuario.detalle.domicilio}}</label>
+                </div> 
+                <div class=" px-2 rounded mt-4 date "> 
+                    <span ><strong> Teléfono: </strong></span>  <label>{{usuario.detalle.telefono}}</label>
+                </div> 
+                <div class=" px-2 rounded mt-4 date "> 
+                    <span ><strong> Estado Vacuna: </strong></span>  <label>{{usuario.detalle.estadoVacuna ? "Si" : "No"}}</label>
+                </div> 
+
+                <div *ngIf="usuario.detalle.estadoVacuna">
+
+                    <div class=" px-2 rounded mt-4 date "> 
+                        <span ><strong> Vacuna: </strong></span>  <label>{{usuario.detalle.vacuna}}</label>
+                    </div> 
+                    <div class=" px-2 rounded mt-4 date "> 
+                        <span ><strong> Fecha Vacuna: </strong></span>  <label>{{usuario.detalle.fechaVacuna | date:'dd/MM/yyyy'}}</label>
+                    </div> 
+                    
+                    <div class=" px-2 rounded mt-4 date "> 
+                        <span ><strong> Número de dosis: </strong></span>  <label>{{usuario.detalle.numeroDosis}}</label>
+                    </div> 
+
+                </div>
+
+                <button type="button" class="btn btn-primary mt-2" routerLink="/empleado/editar">Actualizar Perfil</button>
+
+                
+              
+            </div>
+        </div> 
+    </div>
+</div>
+
+
+
+

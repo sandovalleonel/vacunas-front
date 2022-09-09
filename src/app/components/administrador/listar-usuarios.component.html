@@ -1,0 +1,98 @@
+<app-menu></app-menu>
+
+<div class="pt-3">
+  <button type="button" class="btn btn-success d-inline-block" [routerLink]="['/admin/guardar']">Nuevo Usuario</button>
+
+  <h3 class="text-center  ">Listado de usuarios</h3>
+  
+
+  <div class="    panel-busqueda"  >
+
+
+   
+  
+    <div>
+      <div class="d-inline-block  ">
+        <select class="" [(ngModel)]="estado"  (change)="onChangeestado($event)" title="Vacunado/No vacunado ">
+          <option value="0">Todos </option>
+          <option value="1">Si</option>
+          <option value="2"> No</option>
+        </select>
+      </div>
+  
+      <div class="d-inline-block mx-2">
+        <select class="" [(ngModel)]="nombreVacuna"  (change)="onChangevacuna($event)" title="Vacuna">
+          <option value="0">Todos</option>
+          <option *ngFor="let vacuna of vacunas" value="{{vacuna}}">{{vacuna}} </option>
+        </select>
+      </div>
+  
+      <div class=" d-inline-block border p-1">
+        <div class="d-inline-block mx-2">
+          <input class="" type="date" [(ngModel)]="fechaInicio" name="inicio" title="Fecha inicio"/>
+        </div>
+    
+        <div class="d-inline-block">
+          <input class="" type="date" [(ngModel)]="fechaFin" name="fin"  title="Fecha Fin"/>
+        </div>
+  
+        <button class="btn btn-secondary mx-2 btn-sm" (click)="buscarPorFecha()"> Buscar</button>
+        <button class="btn btn-secondary  btn-sm" (click)="limpiarBusquedas()"> Limpiar</button>
+      </div>
+
+      
+  
+    </div>
+  </div>
+</div>
+
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombres</th>
+        <th scope="col">Cedula</th>
+        <th scope="col">Email</th>
+        <th scope="col">Detalle</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let usuario of usuarios">
+        <th scope="row">{{usuario.id}}</th>
+        <td>{{usuario.nombres}} {{usuario.apellidos}}</td>
+        <td>{{usuario.cedula}}</td>
+        <td>{{usuario.email}}</td>
+        <td>
+          
+            F nacimiento: {{usuario.detalle.fechaNacimiento  | date:'dd/MM/yyyy'}} <br>
+            domicilio: {{usuario.detalle.domicilio}} <br>
+            telefono :{{usuario.detalle.telefono}} <br>
+            vacunado: {{usuario.detalle.estadoVacuna?"Si":"No"}} <br>
+            <span *ngIf="usuario.detalle.estadoVacuna"> 
+              vacuna: {{usuario.detalle.vacuna  }} <br>
+              F vacuna: {{usuario.detalle.fechaVacuna  | date:'dd/MM/yyyy'}} <br>
+              dosis: {{usuario.detalle.numeroDosis}} <br>
+            </span>
+       
+          
+          
+        </td>
+        <td>
+            <button type="button" class="btn btn-outline-info mx-2" routerLink="/admin/editar/{{usuario.id}}" title="Editar">Editar</button>
+            <button type="button" class="btn btn-outline-danger" title="Eliminar" (click)="eliminar(usuario.id)">Eliminar</button>
+
+        </td>
+      </tr>
+      
+      <tr *ngIf="this.usuarios.length == 0">
+        <td colspan="4">no existen datos</td>
+      </tr>
+  
+    </tbody>
+  </table>
+
+
+
+
